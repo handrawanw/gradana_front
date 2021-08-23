@@ -2,23 +2,29 @@
     <form action="/action_page.php" method="post">
       <div class="imgcontainer">
         <h1>Register</h1>
+        <div *ngIf="responseRegister.error">
+          Login Berhasil
+        </div>
+        <div *ngIf="!responseRegister.error">
+          {{responseRegister.message}}
+        </div>
       </div>
     
       <div class="container">
           <label for="psw"><b>Username</b></label>
-          <input type="password" placeholder="Enter Username" name="psw" required>
+          <input type="text" placeholder="Enter Username" name="psw" [(ngModel)]="formsRegister.username" required>
         
           <label for="uname"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="uname" required>
+        <input type="text" placeholder="Enter Email" name="uname"  [(ngModel)]="formsRegister.email" required>
     
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw"  [(ngModel)]="formsRegister.password" required>
         
         <label for="psw"><b>No HP</b></label>
-        <input type="password" placeholder="Enter No HP" name="psw" required>
+        <input type="text" placeholder="Enter No HP" name="psw"  [(ngModel)]="formsRegister.no_hp" required>
         
-        <button type="submit">Register</button>
+        <button type="submit" (click)="registerRequest()">Register</button>
       </div>
 
       <div class="container" style="background-color:#f1f1f1">

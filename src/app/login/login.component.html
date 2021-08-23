@@ -1,17 +1,22 @@
 <div class="login">
-    <form action="/action_page.php" method="post">
+    <form>
       <div class="imgcontainer">
         <h1>Login</h1>
+        <div *ngIf="responseLogin.error">
+          Login Berhasil
+        </div>
+        <div *ngIf="!responseLogin.error">
+          {{responseLogin.message}}
+        </div>
       </div>
     
       <div class="container">
         <label for="uname"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="uname" required>
-    
+        <input type="text" placeholder="Enter Email" name="uname" [(ngModel)]="formsLogin.email" required>
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="formsLogin.password" required>
             
-        <button type="submit">Login</button>
+        <button type="submit" (click)="LoginRequest()">Login</button>
       </div>
 
       <div class="container" style="background-color:#f1f1f1">
