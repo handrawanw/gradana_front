@@ -47,4 +47,8 @@ export class DashboardComponent implements OnInit {
    }).catch(console.log);
   }
 
+  logoutUser():void {
+    localStorage.clear();
+  }
+
 }
