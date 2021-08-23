@@ -1,0 +1,36 @@
+<div class="dashboard">
+    <div class="left">
+        <div>
+            {{userInfo.name}}
+        </div>
+        <div>
+            {{userInfo.no_hp}}
+        </div>
+        <div>
+            Saldo Anda {{saldo}}
+        </div>
+    </div>
+    <div class="right">
+        <table class="tables">
+            <thead>
+                <tr>
+                    <td>
+                    Label
+                </td>
+                <td>
+                   Amount
+                </td>
+                <td>
+                    createdAt
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of history">
+                <td>{{item}}</td>
+             </tr>
+        </tbody>
+        {{history.length}}
+        </table>
+    </div>
+</div>

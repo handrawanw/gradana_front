@@ -1,0 +1,22 @@
+.dashboard {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.dashboard .left {
+    flex:1 1 30%;
+    display: flex;
+    flex-flow: column;
+    font-size: large;
+}
+
+.dashboard .right {
+    flex:1 1 70%;
+}
+
+.tables {
+    width: 100%;
+    table-layout: fixed;
+}
