@@ -7,6 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angulars js';
-  cek = false;
-  data = ["Handrawan","Wawan","Yay"];
 }

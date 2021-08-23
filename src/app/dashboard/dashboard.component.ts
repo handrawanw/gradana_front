@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import {HttpClient} from "@angular/common/http";
 
+import {baseUrl} from "../store";
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -10,27 +12,38 @@ import {HttpClient} from "@angular/common/http";
 
 export class DashboardComponent implements OnInit {
 
-  userInfo = {
-    name:"Handrawan",
-    email:"handrawanw@gmail.com",
-    no_hp:"0813-1425-4420"
-  };
+  saldo:number=1000;
 
-  saldo = 1000;
+  wallet:any={};
 
-  history=[1,2];
+  token:any=localStorage.getItem("token");
+  
+  history:any=[];
 
-  constructor(private http:HttpClient) {
-    
-  }
+  constructor(private http:HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get("http://localhost:3000/wallet/history",{
+    this.getWallet();
+    this.getHistory();
+  }
+
+  getWallet():void {
+    this.http.get(`${baseUrl}/wallet/me`,{
      headers:{
-       token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMjI0ZTM0NWRmMjUwMDcwMGIyMDNmMCIsImlhdCI6MTYyOTYzODIxNywiZXhwIjoxNzE2MDM4MjE3fQ.rBJhXKNjg_DdhCEYfdIpiJkdtUzBePUPZ2MIKg3g4o8"
+       token:this.token
      }
    }).toPromise().then((data:any)=>{
-    //  this.history=data.Data;
+      this.wallet=data.Data;
+   }).catch(console.log);
+  }
+
+  getHistory():void {
+    this.http.get(`${baseUrl}/wallet/history`,{
+     headers:{
+       token:this.token
+     }
+   }).toPromise().then((data:any)=>{
+     this.history=data.Data;
    }).catch(console.log);
   }
 

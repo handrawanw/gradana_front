@@ -1,36 +1,43 @@
 <div class="dashboard">
     <div class="left">
         <div>
-            {{userInfo.name}}
+            <h1>
+                {{wallet?.user?.email}}
+            </h1>
+            {{wallet?.user?.no_hp}}
         </div>
-        <div>
-            {{userInfo.no_hp}}
-        </div>
-        <div>
-            Saldo Anda {{saldo}}
-        </div>
+        <h2>
+            Saldo Anda {{wallet?.balance}}
+        </h2>
     </div>
     <div class="right">
         <table class="tables">
             <thead>
                 <tr>
                     <td>
-                    Label
-                </td>
-                <td>
-                   Amount
-                </td>
-                <td>
-                    createdAt
-                </td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of history">
-                <td>{{item}}</td>
-             </tr>
-        </tbody>
-        {{history.length}}
+                        Label
+                    </td>
+                    <td>
+                        Amount
+                    </td>
+                    <td>
+                        createdAt
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of history">
+                    <td>
+                        {{item.amount}}
+                    </td>
+                    <td>
+                        {{item.isLabel}}
+                    </td>
+                    <td>
+                        {{item.createdAt}}
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
