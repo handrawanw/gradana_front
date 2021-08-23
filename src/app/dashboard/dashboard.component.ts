@@ -47,6 +47,19 @@ export class DashboardComponent implements OnInit {
    }).catch(console.log);
   }
 
+  topUp():void {
+    this.http.patch(`${baseUrl}/wallet/topup`,{
+      email:this.wallet?.user?.email,
+      amount:10000
+    },{
+      headers:{
+        token:this.token
+      }
+    }).toPromise().then(()=>{
+      alert("Top Up berhasil");
+   }).catch(console.log);
+  }
+
   logoutUser():void {
     localStorage.clear();
   }
